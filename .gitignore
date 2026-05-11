@@ -1,0 +1,17 @@
+# Evaluation outputs
+/eval/mnt/
+/eval/results-artifact/
+/eval/plots/
+/eval/summary/
+/eval/.m2/
+/eval/.mplconfig/
+
+# Generated paper artifact
+Daredevil_paper.pdf
+
+# Local editor and OS files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
