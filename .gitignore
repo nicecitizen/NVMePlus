@@ -15,3 +15,10 @@ Daredevil_paper.pdf
 .DS_Store
 *.swp
 *.swo
+
+# Submodules - ignore these libraries
+eval/lib/bcc/
+eval/lib/rocksdb/
+eval/lib/YCSB/
+eval/lib/filebench/
+.gitmodules
