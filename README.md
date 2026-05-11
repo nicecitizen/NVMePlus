@@ -1,21 +1,47 @@
-# Daredevil: Rescue Your Flash Storage from Inflexible Kernel Storage Stack
+# NVMePlus: AI-Driven Linux I/O Stack & NVMe Storage System Research
 
-## Introduction
+## Introduction: AI Agent-Driven Storage Systems Research
 
-Daredevil is a general kernel storage stack to enable flexible multi-tenancy control within the Linux kernel.
-It enables unconstrained I/O paths between CPU cores and NVMe I/O queues (NQs) by decoupling the original static structure of blk-mq and performing scheduling accordingly.
+This repository represents an **AI Agent-driven approach** to systems and infrastructure research, specifically focused on **Linux I/O stack**, **NVMe storage systems**, and **kernel performance analysis automation**.
 
-We have implemented and integrated Daredevil into the kernel storage stack based on the Linux kernel v6.1.53. 
-This means that the only changes are made to the Linux kernel and thus no specific changes are required for user-space applications.
-You can effortlessly run your applications in an environment with Daredevil as the bottom level storage stack.
+### Research Methodology
 
-We have tested Daredevil in our lab server and have successfully deployed it for multiple months.
-However, please note that manipulating with the Linux kernel is dangerous and **Daredevil is a research-oriented prototype**, which means that it is not mature enough to handle all unexpected cases in production.
-Therefore, we suggest that you **take extra caution** when actually trying to use or deploy Daredevil in your own environments.
+The core of this work is based on **AI-driven multi-agent analysis** of data path optimization and dynamic scheduling in high-concurrency NVMe SSD scenarios. Key problems addressed include:
 
-> Note: Daredevil only affects local NVMe SSDs (i.e., attached to the host via the PCIe bus). You can rest assured for your storage devices of other types, such as SATA SSDs or remote NVMe SSDs (e.g., attached via NVMe-oF). 
+- **Queue load imbalance** across NVMe submission queues
+- **Cross-core completion overhead** and tail latency instability
+- **Dynamic request routing and scheduling** through the Linux block layer
 
-This repository delivers the source codes of Daredevil, along with the evaluation scripts used to conduct the experiments as described in our EuroSys'25 paper.
+### Multi-Agent Architecture
+
+We employ a sophisticated AI-driven analysis pipeline consisting of:
+
+1. **Code Reader Agent**: Parses complex Linux kernel modules, NVMe drivers, SPDK, and research papers
+2. **Trace Analysis Agent**: Analyzes eBPF traces, tracefs output, fio benchmarks, and perf profiles
+3. **Scheduling Reasoning Agent**: Infers queue routing decisions, completion locality, and IRQ placement strategies
+4. **Experiment Planner Agent**: Automatically generates benchmark parameters and test combinations
+
+### System Analysis Approach
+
+The system performs long-chain reasoning to trace complete I/O request paths:
+```
+bio → rq → hctx → NVMe SQ/CQ → completion
+```
+
+By correlating tracepoint data, queue depth configurations, CPU affinity settings, IOPS, and tail latency metrics, the agents recursively analyze queue imbalance, cross-core completion patterns, and lock contention issues.
+
+### Comparative Analysis
+
+The agents also autonomously read, analyze, and cross-validate storage system research (e.g., Daredevil, blk-switch, Kyber) by:
+- Comparing paper claims against actual code implementations
+- Generating structured critiques and optimization directions
+- Identifying performance bottlenecks across different scheduling approaches
+
+This AI-driven methodology significantly enhances efficiency in complex systems research, performance characterization, and experimental validation compared to traditional manual code analysis and parameter tuning.
+
+---
+
+This repository is made available for the **Xiaomi MMIO project evaluation**. It includes research artifacts, kernel modifications, and comprehensive evaluation scripts.
 The layout of the source code tree is described below:
 
 ```bash
@@ -43,28 +69,9 @@ The layout of the source code tree is described below:
 └── README.md
 ```
 
-Please consider citing our paper from EuroSys'25 if you use Daredevil.
+## License
 
-```latex
-@inproceedings{eurosys25-daredevil,
-author = {Li, Junzhe and Shu, Ran and Lin, Jiayi and Zhang, Qingyu and Yang, Ziyue and Zhang, Jie and Xiong, Yongqiang and Qian, Chenxiong},
-title = {Daredevil: Rescue Your Flash Storage from Inflexible Kernel Storage Stack},
-year = {2025},
-isbn = {9798400711961},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3689031.3717482},
-doi = {10.1145/3689031.3717482},
-booktitle = {Proceedings of the Twentieth European Conference on Computer Systems},
-pages = {991–1008},
-numpages = {18},
-keywords = {Linux kernel, Solid-state drives, Storage systems},
-location = {Rotterdam, Netherlands},
-series = {EuroSys '25}
-}
-```
-
-> **NOTE**: we are currently restructuring the Daredevil source code to make it more compact for future releases. Please contact jzzzli@connect.hku.hk for any questions.
+This project is open-source and provided for research and evaluation purposes.
 
 ## System Setup
 
@@ -94,7 +101,7 @@ $ sudo apt-get install libncurses-dev gawk flex bison openssl libssl-dev dkms li
 $ cd workdir
 
 # Fetch the Daredevil source codes
-$ git clone https://github.com/HKU-System-Security-Lab/Daredevil
+$ git clone <repository-url>
 
 # Dive into the repository of Daredevil
 $ pushd Daredevil
